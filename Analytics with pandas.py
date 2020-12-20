@@ -86,6 +86,9 @@ def league_result(league):
     print("Games:", games[games['League'] == league].shape[0])
     print("Won:", games.loc[(games['League'] == league) & (games['Result'] == "Won")].shape[0])
     print("Lost:", games.loc[(games['League'] == league) & (games['Result'] == "Lost")].shape[0])
+    print("Win%:",
+          round(int(games.loc[(games['Result'] == "Won") & (games['League'] == league)].shape[0]) * 100 /
+                games[games['League'] == league].shape[0], 2))
     print("WinOdds:", round(games.loc[(games['League'] == league) & (games['Result'] == "Won"), "Odds"].mean(), 3))
     print("ROI", round(games.loc[games['League'] == league, "+/-"].sum() *
                        100 / games[games['League'] == league].shape[0], 2))
@@ -97,6 +100,9 @@ def bet_type(bet):
     print("Games:", games[games['Type'] == bet].shape[0])
     print("Won:", games.loc[(games['Type'] == bet) & (games['Result'] == "Won")].shape[0])
     print("Lost:", games.loc[(games['Type'] == bet) & (games['Result'] == "Lost")].shape[0])
+    print("Win%:",
+          round(int(games.loc[(games['Result'] == "Won") & (games['Type'] == bet)].shape[0]) * 100 /
+                games[games['Type'] == bet].shape[0], 2))
     print("WinOdds:", round(games.loc[(games['Type'] == bet) & (games['Result'] == "Won"), "Odds"].mean(), 3))
     print("ROI", round(games.loc[games['Type'] == bet, "+/-"].sum() *
                        100 / games[games['Type'] == bet].shape[0], 2))
@@ -108,10 +114,13 @@ def bookie_stats(bookie):
     print("Games:", games[games['Bookie'] == bookie].shape[0])
     print("Won:", games.loc[(games['Bookie'] == bookie) & (games['Result'] == "Won")].shape[0])
     print("Lost:", games.loc[(games['Bookie'] == bookie) & (games['Result'] == "Lost")].shape[0])
-    print("+/-:", round(games.loc[games['Bookie'] == bookie, "+/-"].sum(), 3))
+    print("Win%:",
+          round(int(games.loc[(games['Result'] == "Won") & (games['Bookie'] == bookie)].shape[0]) * 100 /
+                games[games['Bookie'] == bookie].shape[0], 2))
     print("WinOdds:", round(games.loc[(games['Bookie'] == bookie) & (games['Result'] == "Won"), "Odds"].mean(), 3))
     print("ROI", round(games.loc[games['Bookie'] == bookie, "+/-"].sum() *
                        100 / games[games['Bookie'] == bookie].shape[0], 2))
+    print("+/-:", round(games.loc[games['Bookie'] == bookie, "+/-"].sum(), 3))
     print('По сравнению со средним коэффициентом во всех конторах:')
     print("OddsAll:", round(games.loc[(games['Bookie'] == "PIN") & (games['Result'] == "Won") |
                                       (games['Bookie'] == "SIN") & (games['Result'] == "Won") |
@@ -121,10 +130,10 @@ def bookie_stats(bookie):
 overall(games)
 # certain_period(196, 235)
 # score_result("1:1")
-# league_result("ROMANIA LIGA 1")
+# league_result("ENGLISH CHAMPIONSHIP")
 # bet_type("OVER")
 # bookie_stats("PIN")
-scores_and_stats()
+# scores_and_stats()
 
 
 # print(games.loc[(games['League'] == '*ENGLISH PREMIER LEAGUE') & (games['Score'] == "1:1"), "Odds"].mean())
