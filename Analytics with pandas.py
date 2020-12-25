@@ -3,52 +3,66 @@ import pandas as pd
 games = pd.read_csv("games.csv", names=["Date", "League", "Game", "Score", "FinalScore", "Odds", "Bookie", "Type",
                                         "Result", "+/-"])
 
-scores_and_stats_dict = {'0:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '1:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '2:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '1:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '2:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '2:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '3:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '3:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '3:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '0:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '0:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '1:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '0:3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '1:3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-                         '2:3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0}
-                         }
+scores_and_stats_dict = {
+    '0:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '1:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '2:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '1:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '2:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '2:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '3:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '3:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '3:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '0:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '0:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '1:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '0:3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '1:3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '2:3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0}
+}
 
 leagues_and_stats_dict = {
-    '*ENGLISH PREMIER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '*ENGLISH PREMIER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                                '+/-': 0},
     'ENGLISH CHAMPIONSHIP': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
     '*GERMANY BUNDESLIGA': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
     'GERMANY BUNDESLIGA 2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
     'GERMANY BUNDESLIGA 3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
     '*ITALY SERIE A': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
     '*SPAIN LA LIGA': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    '*UEFA CHAMPIONS LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    '*UEFA CHAMPIONS LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                               '+/-': 0},
     '*UEFA EUROPA LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
     'AUSTRIA BUNDESLIGA': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
     'AUSTRIA ERSTE LIGA': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'BELGIUM FIRST DIVISION A': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'BELGIUM FIRST DIVISION B': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'CZECH REPUBLIC FIRST LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    'BELGIUM FIRST DIVISION A': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                                 '+/-': 0},
+    'BELGIUM FIRST DIVISION B': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                                 '+/-': 0},
+    'CZECH REPUBLIC FIRST LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                                    '+/-': 0},
     'DENMARK SUPER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
     'FRANCE LIGUE 1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'GEORGIA EROVNULI LIGA': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'GREECE SUPER LEAGUE 1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'HOLLAND EERSTE DIVISIE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    'GEORGIA EROVNULI LIGA': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                              '+/-': 0},
+    'GREECE SUPER LEAGUE 1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                              '+/-': 0},
+    'HOLLAND EERSTE DIVISIE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                               '+/-': 0},
     'HOLLAND EREDIVISIE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'NORTHERN IRELAND PREMIERSHIP': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    'NORTHERN IRELAND PREMIERSHIP': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                                     '+/-': 0},
     'NORWAY ELITESERIEN': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
     'ROMANIA LIGA 1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'SWITZERLAND SUPER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'SWITZERLAND CHALLENGE LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    'SWITZERLAND SUPER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                                 '+/-': 0},
+    'SWITZERLAND CHALLENGE LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                                     '+/-': 0},
     'TURKEY SUPER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'TURKEY TFF FIRST LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
-    'UKRAINE PREMIER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0},
+    'TURKEY TFF FIRST LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                                '+/-': 0},
+    'UKRAINE PREMIER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0,
+                               '+/-': 0},
     'WALES PREMIER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'ROI': 0, '+/-': 0}
 }
 
@@ -184,9 +198,11 @@ def bet_type_and_score(bet, score):
     print("Won:", games.loc[(games['Type'] == bet) & (games['Score'] == score) & (games['Result'] == "Won")].shape[0])
     print("Lost:", games.loc[(games['Type'] == bet) & (games['Score'] == score) & (games['Result'] == "Lost")].shape[0])
     print("Win%:",
-          round(int(games.loc[(games['Result'] == "Won") & (games['Type'] == bet) & (games['Score'] == score)].shape[0]) * 100 /
+          round(int(games.loc[(games['Result'] == "Won") & (games['Type'] == bet) & (games['Score'] == score)].shape[
+                        0]) * 100 /
                 games[games['Type'] == bet].shape[0], 2))
-    print("WinOdds:", round(games.loc[(games['Type'] == bet) & (games['Score'] == score) & (games['Result'] == "Won"), "Odds"].mean(), 3))
+    print("WinOdds:", round(
+        games.loc[(games['Type'] == bet) & (games['Score'] == score) & (games['Result'] == "Won"), "Odds"].mean(), 3))
     print("ROI", round(games.loc[(games['Type'] == bet) & (games['Score'] == score), "+/-"].sum() *
                        100 / games[games['Type'] == bet].shape[0], 2))
     print("+/-:", round(games.loc[(games['Type'] == bet) & (games['Score'] == score), "+/-"].sum(), 3))
@@ -238,17 +254,33 @@ def less_odds(game_odds):
     print("+/-:", round(games.loc[games['Odds'] <= game_odds, "+/-"].sum(), 3))
 
 
+def between_odds(game_odds1, game_odds2):
+    print(games.loc[(games['Odds'] >= game_odds1) & (games['Odds'] <= game_odds2)].head(1000).to_string())
+    print("Games:", games.loc[(games['Odds'] >= game_odds1) & (games['Odds'] <= game_odds2)].shape[0])
+    print("Won:", games.loc[(games['Odds'] >= game_odds1) & (games['Odds'] <= game_odds2) & (games['Result'] == "Won")]
+          .shape[0])
+    print("Lost:",
+          games.loc[(games['Odds'] >= game_odds1) & (games['Odds'] <= game_odds2) & (games['Result'] == "Lost")]
+          .shape[0])
+    print("Win%:", round(int(
+        games.loc[(games['Result'] == "Won") & (games['Odds'] >= game_odds1) & (games['Odds'] <= game_odds2)].shape[
+            0]) * 100 / games.loc[(games['Odds'] >= game_odds1) & (games['Odds'] <= game_odds2)].shape[0], 2))
+    print("ROI", round(games.loc[(games['Odds'] >= game_odds1) & (games['Odds'] <= game_odds2), "+/-"].sum() * 100 /
+                       games.loc[(games['Odds'] >= game_odds1) & (games['Odds'] <= game_odds2)].shape[0], 2))
+    print("+/-:", round(games.loc[(games['Odds'] >= game_odds1) & (games['Odds'] <= game_odds2), "+/-"].sum(), 3))
+
+
 # overall(games)
-# certain_period(278, 287)
-# score_result("1:1")
-league_result("ENGLISH CHAMPIONSHIP")
+# certain_period(315, 400)
+# score_result("3:0")
+# league_result("*SPAIN LA LIGA")
 # bet_type_and_score('UNDER', "1:1")
 # bet_type("OVER")
 # bookie_stats("PIN")
 # scores_and_stats()
 # leagues_and_stats()
-# more_odds(2)
-# less_odds(1.7)
-
+# more_odds(2.5)
+# less_odds(2)
+# between_odds(2, 2.1)
 
 # print(games.loc[(games['League'] == '*ENGLISH PREMIER LEAGUE') & (games['Score'] == "1:1"), "Odds"].mean())
