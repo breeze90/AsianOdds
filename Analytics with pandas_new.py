@@ -1,7 +1,8 @@
 import pandas as pd
 
-games = pd.read_csv("games.csv", names=["Date", "League", "Game", "Score", "FinalScore", "Odds", "Bookie", "Type",
-                                        "Result", "ROI"])
+games = pd.read_csv("games_with_minute.csv",
+                    names=["Date", "League", "Game", "Cards", "Score", "FinalScore", "Odds", "Bookie", "Minute", "Type",
+                           "Result", "ROI"])
 
 scores_and_stats_dict = {
     '0:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
@@ -10,13 +11,11 @@ scores_and_stats_dict = {
     '1:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '2:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '2:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
-    '3:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '3:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '3:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '0:1': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '0:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '1:2': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
-    '0:3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '1:3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '2:3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0}
 }
@@ -267,10 +266,10 @@ def between_odds(game_odds1, game_odds2):
 
 
 overall(games)
-certain_period(351, 489)
+# certain_period(0, 1)
 # score_result("1:0")
-# league_result("GERMANY BUNDESLIGA 3")
-# bet_type_and_score('OVER', "1:1"
+# league_result("GERMANY BUNDESLIGA 2")
+# bet_type_and_score('OVER', "1:1")
 # bet_type("UNDER")
 # bookie_stats("PIN")
 # scores_and_stats()
