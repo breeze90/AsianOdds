@@ -1,7 +1,7 @@
 import pandas as pd
 
-games = pd.read_csv("games.csv", names=["Date", "League", "Game", "Score", "FinalScore", "Odds", "Bookie", "Type",
-                                        "Result", "ROI"])
+games = pd.read_csv("games_stats.csv", names=["Date", "League", "Game", "Score", "FTScore", "Odds", "Bookie", "Type",
+                                              "Result", "ROI"])
 
 scores_and_stats_dict = {
     '0:0': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
@@ -32,7 +32,9 @@ leagues_and_stats_dict = {
                              'ROI': 0},
     'GERMANY BUNDESLIGA 3': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0,
                              'ROI': 0},
+    'GERMANY CUP': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '*ITALY SERIE A': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
+    'ITALY CUP': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '*SPAIN LA LIGA': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0, 'ROI': 0},
     '*UEFA CHAMPIONS LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0,
                                'ROI': 0},
@@ -68,11 +70,25 @@ leagues_and_stats_dict = {
                             'ROI': 0},
     'TURKEY TFF FIRST LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0,
                                 'ROI': 0},
+    'TURKEY CUP': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0,
+                   'ROI': 0},
     'UKRAINE PREMIER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0,
                                'ROI': 0},
     'WALES PREMIER LEAGUE': {'Матчи': 0, 'Победы': 0, 'Поражения': 0, 'Win%': 0, 'Коэф.': float(0), 'Yield': 0,
                              'ROI': 0}
 }
+
+
+def overall(games_csv):
+    print(games_csv.to_string())
+    # print(games_csv.sort_values(by=['Odds']).to_string())
+    print("Games:", games_csv.shape[0])
+    print("Won:", int(games_csv[games_csv['Result'] == "Won"].shape[0]))
+    print("Lost:", games_csv[games_csv['Result'] == "Lost"].shape[0])
+    print("Win%:", round(int(games_csv[games_csv['Result'] == "Won"].shape[0]) * 100 / games_csv.shape[0], 2))
+    print("WinOdds:", round(games.loc[games['Result'] == "Won", "Odds"].mean(), 3))
+    print("Yield:", round(games_csv["ROI"].sum() * 100 / games_csv.shape[0], 2))
+    print("ROI:", round(games_csv["ROI"].sum(), 2))
 
 
 def scores_and_stats():
@@ -117,18 +133,6 @@ def leagues_and_stats():
         value['Yield'] = round(value['ROI'] * 100 / value['Матчи'], 2)
     for i in sorted(leagues_and_stats_dict.items(), key=lambda item: item[1]['ROI'], reverse=True):
         print(i)
-
-
-def overall(games_csv):
-    print(games_csv.to_string())
-    # print(games_csv.sort_values(by=['Odds']).to_string())
-    print("Games:", games_csv.shape[0])
-    print("Won:", int(games_csv[games_csv['Result'] == "Won"].shape[0]))
-    print("Lost:", games_csv[games_csv['Result'] == "Lost"].shape[0])
-    print("Win%:", round(int(games_csv[games_csv['Result'] == "Won"].shape[0]) * 100 / games_csv.shape[0], 2))
-    print("WinOdds:", round(games.loc[games['Result'] == "Won", "Odds"].mean(), 3))
-    print("Yield:", round(games_csv["ROI"].sum() * 100 / games_csv.shape[0], 2))
-    print("ROI:", round(games_csv["ROI"].sum(), 2))
 
 
 def certain_period(sample1, sample2):
@@ -267,14 +271,14 @@ def between_odds(game_odds1, game_odds2):
 
 
 overall(games)
-certain_period(351, 489)
-# score_result("1:0")
+certain_period(351, 551)
+# score_result("0:0")
 # league_result("GERMANY BUNDESLIGA 3")
 # bet_type_and_score('OVER', "1:1"
 # bet_type("UNDER")
-# bookie_stats("PIN")
+# bookie_stats("P88")
 # scores_and_stats()
-# leagues_and_stats()
+leagues_and_stats()
 # more_odds(2.5)
 # less_odds(2)
 # between_odds(5, 6)

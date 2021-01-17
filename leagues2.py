@@ -25,20 +25,25 @@ HEADERS = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:82.0)
 
 URL = ["Https://soccer365.ru/competitions/474/results/", "Https://soccer365.ru/competitions/20/results/",
        "Https://soccer365.ru/competitions/473/results/", "Https://soccer365.ru/competitions/19/results/",
-       "Https://soccer365.ru/competitions/12/results/", "Https://soccer365.ru/competitions/485/results/",
-       "Https://soccer365.ru/competitions/487/results/", "Https://soccer365.ru/competitions/712/results/",
+       "Https://soccer365.ru/competitions/12/results/",
        "Https://soccer365.ru/competitions/17/results/", "Https://soccer365.ru/competitions/587/results/",
        "Https://soccer365.ru/competitions/586/results/", "Https://soccer365.ru/competitions/591/results/",
-       "Https://soccer365.ru/competitions/585/results/", "Https://soccer365.ru/competitions/560/results/",
-       "Https://soccer365.ru/competitions/606/results/", "Https://soccer365.ru/competitions/16/results/",
+       "Https://soccer365.ru/competitions/560/results/",
+       "Https://soccer365.ru/competitions/16/results/",
        "Https://soccer365.ru/competitions/15/results/", "Https://soccer365.ru/competitions/596/results/",
        "Https://soccer365.ru/competitions/595/results/", "Https://soccer365.ru/competitions/747/results/",
-       "Https://soccer365.ru/competitions/667/results/", "Https://soccer365.ru/competitions/712/results/",
-       "Https://soccer365.ru/competitions/436/results/", "Https://soccer365.ru/competitions/723/results/",
+       "Https://soccer365.ru/competitions/667/results/",
+       "Https://soccer365.ru/competitions/723/results/",
        "Https://soccer365.ru/competitions/721/results/", "Https://soccer365.ru/competitions/14/results/",
        "Https://soccer365.ru/competitions/735/results/", "Https://soccer365.ru/competitions/577/results/",
        "Https://soccer365.ru/competitions/18/results/", "Https://soccer365.ru/competitions/554/results/",
        "Https://soccer365.ru/competitions/716/results/", "Https://soccer365.ru/competitions/715/results/"]
+#  "Https://soccer365.ru/competitions/485/results/" Бельгия
+# "Https://soccer365.ru/competitions/487/results/" Бельгия 2
+#  "Https://soccer365.ru/competitions/585/results/" Грузия
+#  "Https://soccer365.ru/competitions/606/results/" Исландия
+#  "Https://soccer365.ru/competitions/436/results/" США
+
 
 links = []
 games = []
@@ -158,7 +163,7 @@ def zero_zero(games):
     print(f'Прошло игр: {passed_games}')
     print(f'Win%: {round(passed_games * 100 / total_games, 2)}')
     for k, l in goals_and_minutes.items():
-        print(k, l)
+        print(f'put({k}, {round( (l + total_games - passed_games) /  l + 0.01, 3)});')
 
 
 def one_one(games):
@@ -179,7 +184,7 @@ def one_one(games):
             if local_home_score == 1 and local_away_score == 1:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 2 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 2 and 75 not in game.away_goals:
                     passed_games += 1
@@ -217,7 +222,7 @@ def two_two(games):
             if local_home_score == 2 and local_away_score == 2:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 4 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 4 and 75 not in game.away_goals:
                     passed_games += 1
@@ -253,7 +258,7 @@ def one_zero(games):
             if local_home_score == 1 and local_away_score == 0:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 1 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 1 and 75 not in game.away_goals:
                     passed_games += 1
@@ -289,7 +294,7 @@ def zero_one(games):
             if local_home_score == 0 and local_away_score == 1:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 1 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 1 and 75 not in game.away_goals:
                     passed_games += 1
@@ -325,7 +330,7 @@ def two_zero(games):
             if local_home_score == 2 and local_away_score == 0:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 2 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 2 and 75 not in game.away_goals:
                     passed_games += 1
@@ -361,7 +366,7 @@ def zero_two(games):
             if local_home_score == 0 and local_away_score == 2:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 2 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 2 and 75 not in game.away_goals:
                     passed_games += 1
@@ -397,7 +402,7 @@ def two_one(games):
             if local_home_score == 2 and local_away_score == 1:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 3 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 3 and 75 not in game.away_goals:
                     passed_games += 1
@@ -433,7 +438,7 @@ def one_two(games):
             if local_home_score == 1 and local_away_score == 2:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 3 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 3 and 75 not in game.away_goals:
                     passed_games += 1
@@ -469,7 +474,7 @@ def three_zero(games):
             if local_home_score == 3 and local_away_score == 0:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 3 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 3 and 75 not in game.away_goals:
                     passed_games += 1
@@ -505,7 +510,7 @@ def zero_three(games):
             if local_home_score == 0 and local_away_score == 3:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 3 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 3 and 75 not in game.away_goals:
                     passed_games += 1
@@ -541,7 +546,7 @@ def three_one(games):
             if local_home_score == 3 and local_away_score == 1:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 4 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 4 and 75 not in game.away_goals:
                     passed_games += 1
@@ -577,7 +582,7 @@ def one_three(games):
             if local_home_score == 1 and local_away_score == 3:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 4 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 4 and 75 not in game.away_goals:
                     passed_games += 1
@@ -615,7 +620,7 @@ def three_two(games):
             if local_home_score == 3 and local_away_score == 2:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 5 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 5 and 75 not in game.away_goals:
                     passed_games += 1
@@ -653,7 +658,7 @@ def two_three(games):
             if local_home_score == 2 and local_away_score == 3:
                 if 75 not in game.home_goals and 75 not in game.away_goals:
                     total_games += 1
-                    # print(game)
+                    print(game)
                 if len(game.home_goals) + len(game.away_goals) > 5 and 75 not in game.home_goals and len(
                         game.home_goals) + len(game.away_goals) > 5 and 75 not in game.away_goals:
                     passed_games += 1
@@ -682,8 +687,8 @@ two_zero(games)
 zero_two(games)
 two_one(games)
 one_two(games)
-three_zero(games)
-zero_three(games)
+# three_zero(games)
+# zero_three(games)
 three_one(games)
 one_three(games)
 three_two(games)

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
 x = np.array([75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89])
-y = np.array([1.846, 1.917, 1.961, 2.045, 2.140, 2.204, 2.332, 2.463, 2.613, 2.731, 3.010, 3.118, 3.499, 3.669, 3.972])
+y = np.array([1.793, 1.870, 1.950, 2.019, 2.093, 2.180, 2.303, 2.428, 2.580, 2.718, 2.882, 3.045, 3.398, 3.700, 4.089])
 model = LinearRegression().fit(x.reshape((-1, 1)), y)
 r_sq = model.score(x.reshape((-1, 1)), y)
 print('coef', r_sq)
